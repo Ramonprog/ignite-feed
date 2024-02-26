@@ -1,3 +1,4 @@
+import { Comment } from "./Comment";
 import styles from "./Post.module.css";
 
 export function Post() {
@@ -48,24 +49,11 @@ export function Post() {
             Publicar
           </button>
         </footer>
+
         <div className={styles.commentList}>
-          <div className={styles.comment}>
-            <img
-              src="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-              alt="Foto de perfil do usuário"
-            />
-            <div className={styles.commentBox}>
-              <p>
-                <span>Alisson Ramon</span>
-                Fala galeraa 👋 Acabei de subir mais um projeto no meu portifa.
-                É um projeto que fiz no NLW Return, evento da Rocketseat. O nome
-                do projeto é DoctorCare 🚀
-              </p>
-              <button type="button">
-                <img src="./assets/trash.svg" alt="Remover comentário" />
-              </button>
-            </div>
-          </div>
+          <Comment />
+          <Comment />
+          <Comment />
         </div>
       </form>
     </article>
