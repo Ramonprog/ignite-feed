@@ -1,0 +1,7 @@
+/*display none não é bom para acessibilidade*/
+
+/* Esses itens não herdam a estilização de fonts do body, button, input, textarea */
+/*
+    É importante usar Rem como medida relativa, ajuda em dispositivos de acessibilidade, px não mudar essa fonte
+    caso o user queira deixar maior
+ */

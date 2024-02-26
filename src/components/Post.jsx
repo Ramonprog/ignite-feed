@@ -20,6 +20,7 @@ export function Post() {
           Publicado há 1h
         </time>
       </header>
+
       <div className={styles.content}>
         <p>
           Fala galeraa 👋 Acabei de subir mais um projeto no meu portifa. É um
@@ -36,6 +37,37 @@ export function Post() {
           <a href="#">#rocketSeat</a>
         </p>
       </div>
+
+      <form className={styles.commentForm}>
+        <strong>Deixe seu feedback</strong>
+
+        <textarea placeholder="Deixe um comentário" />
+
+        <footer>
+          <button className={styles.submitButton} type="submit">
+            Publicar
+          </button>
+        </footer>
+        <div className={styles.commentList}>
+          <div className={styles.comment}>
+            <img
+              src="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+              alt="Foto de perfil do usuário"
+            />
+            <div className={styles.commentBox}>
+              <p>
+                <span>Alisson Ramon</span>
+                Fala galeraa 👋 Acabei de subir mais um projeto no meu portifa.
+                É um projeto que fiz no NLW Return, evento da Rocketseat. O nome
+                do projeto é DoctorCare 🚀
+              </p>
+              <button type="button">
+                <img src="./assets/trash.svg" alt="Remover comentário" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
     </article>
   );
 }
