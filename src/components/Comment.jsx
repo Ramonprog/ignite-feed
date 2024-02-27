@@ -19,14 +19,14 @@ export function Comment() {
               </time>
             </div>
             <button title="Deletar comentário">
-              <Trash size={20} />
+              <Trash size={24} />
             </button>
           </header>
           <p>Muito bom parabnes</p>
         </div>
 
         <footer>
-          <button>
+          <button className={styles.btn}>
             <ThumbsUp />
             Aplaudir <span>20</span>
           </button>
