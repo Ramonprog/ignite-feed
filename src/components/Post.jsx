@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
@@ -7,8 +7,8 @@ import { format, formatDistanceToNow } from "date-fns";
 import ptBr from "date-fns/locale/pt-BR";
 
 export function Post({ publishedAt, content, author }) {
-  const commentRef = useRef(null);
-
+  const [comments, setComments] = useState(["Post muito bacana"]);
+  const [newCommentText, setNewCommentText] = useState("");
   const publishedDateFormatted = format(
     publishedAt,
     "d 'de' LLLL 'às' HH:mm'h'",
@@ -22,11 +22,10 @@ export function Post({ publishedAt, content, author }) {
     addSuffix: true,
   });
 
-  const comments = [1, 2, 3];
-
   function handleCreateNewComment(e) {
     e.preventDefault();
-    console.log(commentRef.current.value);
+    setComments([...comments, newCommentText]);
+    setNewCommentText("");
   }
 
   return (
@@ -63,13 +62,13 @@ export function Post({ publishedAt, content, author }) {
         <strong>Deixe seu feedback</strong>
 
         <textarea
-          ref={commentRef}
           name="comment"
           id="comment"
           cols="30"
           required
           className={styles.input}
           placeholder="Deixe um comentário"
+          onChange={(e) => setNewCommentText(e.target.value)}
         />
 
         <footer>
@@ -80,7 +79,7 @@ export function Post({ publishedAt, content, author }) {
 
         <div className={styles.commentList}>
           {comments.map((comment) => {
-            return <Comment key={comment} />;
+            return <Comment content={comment} key={comment} />;
           })}
         </div>
       </form>
