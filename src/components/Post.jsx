@@ -90,7 +90,7 @@ export function Post({ publishedAt, content, author }) {
             return (
               <Comment
                 content={comment}
-                deleteComment={deleteComment}
+                onDeleteComment={deleteComment}
                 key={comment}
               />
             );
