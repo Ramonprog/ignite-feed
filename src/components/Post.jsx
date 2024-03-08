@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
@@ -26,6 +26,13 @@ export function Post({ publishedAt, content, author }) {
     e.preventDefault();
     setComments([...comments, newCommentText]);
     setNewCommentText("");
+  }
+
+  function deleteComment(commentToDelete) {
+    const commentsWithoutDeletedOne = comments.filter((comment) => {
+      return comment !== commentToDelete;
+    });
+    setComments(commentsWithoutDeletedOne);
   }
 
   return (
@@ -66,6 +73,7 @@ export function Post({ publishedAt, content, author }) {
           id="comment"
           cols="30"
           required
+          value={newCommentText}
           className={styles.input}
           placeholder="Deixe um comentário"
           onChange={(e) => setNewCommentText(e.target.value)}
@@ -79,7 +87,13 @@ export function Post({ publishedAt, content, author }) {
 
         <div className={styles.commentList}>
           {comments.map((comment) => {
-            return <Comment content={comment} key={comment} />;
+            return (
+              <Comment
+                content={comment}
+                deleteComment={deleteComment}
+                key={comment}
+              />
+            );
           })}
         </div>
       </form>
